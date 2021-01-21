@@ -41,6 +41,7 @@ module.exports = {
     'standard/computed-property-even-spacing': 'off',
     'vue/order-in-components': 0,
     'vue/no-unused-components': 0,
+    'vue/html-closing-bracket-newline': 0,
     'unicode-bom': 0
   }
 }

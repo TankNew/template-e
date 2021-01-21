@@ -24,7 +24,7 @@ const date = function(dateObject) {
     const date = year + '-' + month + '-' + day
     return date
   }
-  return 'null'
+  return null
 }
 
 const dateOnly = function(dateObject) {
@@ -43,7 +43,7 @@ const dateOnly = function(dateObject) {
     const date = year + '-' + month
     return date
   }
-  return 'null'
+  return null
 }
 //过滤空格
 const trimspace = function(vStr) {

@@ -1,7 +1,7 @@
 <template>
   <section class="home">
     <section class="container">
-      <section class="ad-announce">
+      <section v-if="ad1 || (announces && announces.length > 0)" class="ad-announce">
         <section v-if="ad1" class="ad-block">
           <div class="ad-content">
             <h3 class="title">
@@ -34,7 +34,9 @@
             <dt class="block-title">
               <span class="name">{{ group1.title }}</span>
               <span class="more">
-                <a href="javascript:void(0)" @click="goNewsGroup(group1.catalogGroupId, group1.type)">{{ $L('More') }} ></a>
+                <a href="javascript:void(0)" @click="goNewsGroup(group1.catalogGroupId, group1.type)"
+                  >{{ $L('More') }} ></a
+                >
               </span>
             </dt>
             <dd v-for="item in group1.items" :key="item.id">
@@ -187,7 +189,7 @@ export default {
     params = {
       params: {
         SkipCount: 0,
-        MaxResultCount: 1
+        MaxResultCount: 10
       }
     }
     announces = (await store.dispatch('app/getAnounces', params)).items

@@ -46,7 +46,7 @@
             >{{ item.displayName }}</a>
           </dd>
         </dl>
-        <dl class="page-news-leftbar-announce">
+        <dl v-if="announces && announces.length > 0" class="page-news-leftbar-announce">
           <dt>{{ $L(`Announce`) }}</dt>
           <dd v-for="item in announces" :key="item.code">
             <a href="javascript:void(0)" @click="target(item.id)">

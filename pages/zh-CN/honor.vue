@@ -4,9 +4,9 @@
       <div class="honor-list">
         <ul>
           <li
-            v-for="(item,index) in pageContent.items"
+            v-for="(item, index) in pageContent.items"
             :key="item.id"
-            :style="'animation-delay:'+index*0.5+'s;'"
+            :style="'animation-delay:' + index * 0.5 + 's;'"
           >
             <span class="img-container">
               <img :src="item.miniCover" />
@@ -14,7 +14,11 @@
             <a href="javascript:void(0)" class="gray">
               <span>{{ item.title }}</span>
             </a>
-            <i>{{ formatDate(item.startDate) }} 一 {{ formatDate(item.endDate) }}</i>
+            <i
+              >{{ formatDate(item.startDate)
+              }}{{ formatDate(item.startDate) != null && formatDate(item.endDate) !== null ? ' 一 ' : ''
+              }}{{ formatDate(item.endDate) }}</i
+            >
           </li>
         </ul>
       </div>

@@ -7,7 +7,7 @@
             <h3 class="title">
               <span class="name">{{ ad1.title }}</span>
             </h3>
-            <div class="text">{{ ad1.text }}</div>
+            <div class="text" v-html="ad1.text"></div>
             <div class="links">
               <a :href="ad1.url ? ad1.url : 'javascript:void(0)'" class="button-gray">{{ $L(`More`) }} ></a>
             </div>

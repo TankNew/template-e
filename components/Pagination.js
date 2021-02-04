@@ -208,7 +208,6 @@ export default {
         }
         startNumber = numberOfPages - numberOfLinks + 1
       } else {
-        console.log('else')
         // We are somewhere in the middle of the page list
         if (limit > ELLIPSIS_THRESHOLD) {
           numberOfLinks = limit - 2

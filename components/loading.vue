@@ -11,11 +11,9 @@ export default {
   }),
   methods: {
     start() {
-      console.log('loading..')
       this.loading = true 
     },
     finish() {
-      console.log('loaded!')
       this.loading = false
     }
   }

@@ -55,6 +55,12 @@ export default {
       }
     ]
   },
+  // 删除nuxt自动生成的标签，可能影响seo
+  hooks: {
+    'generate:page': page => {
+      page.html = page.html.replace(/ data-n-head=".*?"/gi, '').replace(/ data-hid=".*?"/gi, '')
+    }
+  },
   router: {
     middleware: ['user-agent'],
     mode: 'history'

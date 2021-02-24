@@ -6,15 +6,18 @@ $buildFolder = (Get-Item -Path "./" -Verbose).FullName
 Set-Location $buildFolder
 
 # 生成最新的主题
-node ./theme.js
+node ./theme.js 
 # 编译成CSS
+$nodePath = Join-Path $buildFolder "assets/css"
+$outPath = Join-Path $buildFolder "static/css"
 
-for theme in ${work_path}/assets/css/theme*
-do
+$themes = Get-ChildItem -Path "$nodePath\theme*" -Exclude $Exclued
+Foreach($theme in $themes)  
+{   
     # echo $theme
-    lessc $theme static/css/${${theme%.*}##*/}.css
-done
-
+    # echo (Join-Path $outPath "$($theme.Basename).css")
+    lessc $theme  (Join-Path $outPath "$($theme.Basename).css")
+} 
 docker build -t docker.ednet.cn/template-c .
 docker push docker.ednet.cn/template-c
 docker rmi $(docker images -f "dangling=true" -q)

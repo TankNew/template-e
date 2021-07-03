@@ -24,9 +24,12 @@ header {
     }
   }
   @media @tablet {
-    position: static;
-    color: @color-primary;
-    background-color: @color-white;
+    background-color: rgba(0, 0, 0, 0);
+    &.color {
+      color: @color-white;
+      background-color: hsla(@color-primary-hsl, 0.75);
+      box-shadow: 0 1px 10px 1px @color-gray-lighter;
+    }
     &.sub {
       background-color: @color-white;
       .header-main {
@@ -39,10 +42,8 @@ header {
       }
     }
   }
-  .container {
+  > .container {
     position: relative;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
     height: 6rem;
     display: flex;
     flex-direction: column;
@@ -72,7 +73,7 @@ header {
           height: 4rem;
           // filter: grayscale(100%) brightness(100);
           @media @tablet {
-            height: 6rem;
+            height: 5rem;
           }
         }
       }
@@ -83,6 +84,7 @@ header {
         @media (min-width: 576px) {
         }
         @media (min-width: 768px) {
+          white-space: nowrap;
         }
         @media (min-width: 992px) {
         }
@@ -114,10 +116,19 @@ header {
               pointer-events: none;
             }
             @media @tablet {
-              color: @color-primary;
-              border: 1px solid @color-primary;
+              margin-bottom: 1rem;
+              color: @color-primary-lighter;
+              border: 1px solid @color-primary-lighter;
             }
           }
+        }
+      }
+      @media @tablet {
+        position: fixed;
+        right: 1rem;
+        top: 10rem;
+        ul {
+          flex-direction: column;
         }
       }
     }

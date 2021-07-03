@@ -1,7 +1,7 @@
 <template>
   <div class="body-container">
     <!-- 头部 -->
-    <header :class="currentPath.navbarType !== 5 ? 'sub' : ''" @click="closeNavbar">
+    <header :class="[currentPath.navbarType !== 5 ? 'sub' : '', isScroll ? 'color' : '']" @click="closeNavbar">
       <div class="container">
         <div class="header-main">
           <a class="back-link" @click="back">
@@ -14,6 +14,7 @@
             </div>
             <div class="company-name">{{ companyInfo.logoText }}</div>
           </div>
+          <navbar ref="navbar" :items="navbars"></navbar>
           <div class="header-tools">
             <ul>
               <li>
@@ -51,7 +52,6 @@
         </div>
       </div>
     </header>
-    <navbar ref="navbar" :items="navbars"></navbar>
     <section class="main">
       <!-- banner -->
       <div :class="['banner', currentPath.navbarType !== 5 ? 'sub' : '']">
@@ -143,6 +143,7 @@ export default {
   },
   data() {
     return {
+      isScroll: false,
       slide: 0,
       year: new Date().getFullYear(),
       sliding: null,
@@ -230,9 +231,12 @@ export default {
     this.setcurrentPath({ path: this.$route.path })
   },
   mounted() {
+    window.addEventListener('scroll', this.handleScroll, true)
   },
   methods: {
-    handleSwiperReadied(swiper) {
+    handleSwiperReadied(swiper) {},
+    handleScroll() {
+      this.isScroll = document.documentElement.scrollTop !== 0
     },
     closeNavbar() {
       this.$refs.navbar.close()

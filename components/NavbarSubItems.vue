@@ -14,7 +14,7 @@
           >
             <i class="fas fa-caret-right"></i>
           </span>
-          <span>{{ item.displayName }}</span>
+          <span class="name">{{ item.displayName }}</span>
         </a>
         <navbar-sub-items
           v-if="hasChildren(item)"

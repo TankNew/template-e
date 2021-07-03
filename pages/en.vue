@@ -1,7 +1,7 @@
 <template>
   <div class="body-container">
     <!-- 头部 -->
-    <header :class="currentPath.navbarType !== 5 ? 'sub' : ''" @click="closeNavbar">
+    <header :class="[currentPath.navbarType !== 5 ? 'sub' : '', isScroll ? 'color' : '']" @click="closeNavbar">
       <div class="container">
         <div class="header-main">
           <a class="back-link" @click="back">
@@ -14,6 +14,7 @@
             </div>
             <div class="company-name">{{ companyInfo.logoText }}</div>
           </div>
+          <navbar ref="navbar" :items="navbars"></navbar>
           <div class="header-tools">
             <ul>
               <li>
@@ -27,7 +28,7 @@
                 </a>
               </li>
               <li v-if="multiLangs">
-                <a @click="changeLanguage('zh-CN')">
+                <a @click="changeLanguage('en')">
                   <i class="fas fa-language"></i>
                 </a>
               </li>
@@ -51,12 +52,11 @@
         </div>
       </div>
     </header>
-    <navbar ref="navbar" :items="navbars"></navbar>
     <section class="main">
       <!-- banner -->
       <div :class="['banner', currentPath.navbarType !== 5 ? 'sub' : '']">
         <client-only>
-          <div v-swiper:bannerSwiper="swiperOption">
+          <div v-swiper:bannerSwiper="swiperOption" @ready="handleSwiperReadied">
             <div class="swiper-wrapper position-relative">
               <div v-for="(item, index) in bannerImgs" :key="index" class="swiper-slide">
                 <img :src="getImgUrl(item.imgUrl)" />
@@ -143,6 +143,7 @@ export default {
   },
   data() {
     return {
+      isScroll: false,
       slide: 0,
       year: new Date().getFullYear(),
       sliding: null,
@@ -229,8 +230,17 @@ export default {
   created() {
     this.setcurrentPath({ path: this.$route.path })
   },
-  mounted() {},
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll, true)
+  },
   methods: {
+    handleSwiperReadied(swiper) {},
+    handleScroll() {
+      this.isScroll = document.documentElement.scrollTop !== 0
+    },
+    closeNavbar() {
+      this.$refs.navbar.close()
+    },
     triggerNavbar() {
       this.$refs.navbar.trigger()
     },

@@ -2,22 +2,22 @@
   <div class="navbar">
     <ul>
       <li
-        v-for="(item,index) in arry"
+        v-for="(item, index) in arry"
         :key="index"
-        :class="[$attrs['active-id']===item.id?'acitved':'']"
-        @click.stop.prevent="changeActiveId(item,index)"
-        @mouseenter="pcDropdown(item,index,true)"
-        @mouseleave="pcDropdown(item,index,false)"
+        :class="[$attrs['active-id'] === item.id ? 'acitved' : '']"
+        @click.stop.prevent="changeActiveId(item, index)"
+        @mouseenter="pcDropdown(item, index, true)"
+        @mouseleave="pcDropdown(item, index, false)"
       >
-        <a class="nav-link white" @click.stop.prevent="go(item,index)">
+        <a class="nav-link white" @click.stop.prevent="go(item, index)">
           <span
             v-if="hasChildren(item)"
-            :class="['expand-icon',item.expand?'expand':'']"
-            @click.stop.prevent="changeActiveId(item,index)"
+            :class="['expand-icon', item.expand ? 'expand' : '']"
+            @click.stop.prevent="changeActiveId(item, index)"
           >
             <i class="fas fa-caret-right"></i>
           </span>
-          <span>{{ item.displayName }}</span>
+          <span class="name">{{ item.displayName }}</span>
         </a>
         <navbar-sub-items
           v-if="hasChildren(item)"

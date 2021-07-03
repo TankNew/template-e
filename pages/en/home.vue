@@ -213,7 +213,6 @@ export default {
     return { ad1, ad2, announces, group1, group2, group3 }
   },
   created() {
-    console.log(this.announces)
   },
   methods: {
     target(id) {

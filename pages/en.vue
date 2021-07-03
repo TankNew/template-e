@@ -236,7 +236,7 @@ export default {
   methods: {
     handleSwiperReadied(swiper) {},
     handleScroll() {
-      this.isScroll = document.documentElement.scrollTop !== 0
+      this.isScroll = document.documentElement.scrollTop > 10
     },
     closeNavbar() {
       this.$refs.navbar.close()

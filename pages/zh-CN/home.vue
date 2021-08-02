@@ -37,10 +37,10 @@
         <ul>
           <li v-for="item in group2.items" :key="item.id" :data-index="item.id" :data-group="group2.type">
             <div class="cover">
-              <img :src="item.cover" @click="goNewsGroup(item.id, group2.type)" />
+              <img :src="item.cover" @click="goNewsDetail(item.id, group2.type)" />
             </div>
             <div class="info">
-              <h3 @click="goNewsGroup(item.id, group2.type)">{{ item.title }}</h3>
+              <h3 @click="goNewsDetail(item.id, group2.type)">{{ item.title }}</h3>
               <p>{{ filter(item.content, 200) }}</p>
             </div>
           </li>
@@ -54,7 +54,7 @@
           <h6>{{ group3.catalogGroup.info }}</h6>
         </div>
         <ul>
-          <li v-for="item in group3.items" :key="item.id" @click="goNewsGroup(item.id, group3.type)">
+          <li v-for="item in group3.items" :key="item.id" @click="goNewsDetail(item.id, group3.type)">
             <div class="product-cover">
               <span>
                 <img :src="item.cover" />

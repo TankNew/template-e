@@ -19,6 +19,16 @@ let css = ['~/static/css/all.min.css']
 if (process.env.NODE_ENV === 'development') css.push(`assets/css/theme.${defaultTheme}.less`)
 
 export default {
+  // serverMiddleware: [
+  //   {
+  //     path: '/zh-CN/',
+  //     handler: '~/nuxt-page-cache/page.js'
+  //   },
+  //   {
+  //     path: '/en/',
+  //     handler: '~/nuxt-page-cache/page.js'
+  //   }
+  // ],
   publicRuntimeConfig: {
     NUXT_ENV: process.env.NUXT_ENV || process.env.NODE_ENV,
     NUXT_ENV_THEME: process.env.NUXT_ENV_THEME || defaultTheme,
